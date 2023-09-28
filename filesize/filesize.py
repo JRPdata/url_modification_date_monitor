@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 
 def http_get_file_size(url):
     try:
-        response = requests.head(url)
+        response = requests.get(url)
         if response.status_code == 200:
             file_size = int(response.headers['Content-Length'])
             return file_size
