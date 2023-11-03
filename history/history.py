@@ -8,19 +8,19 @@ def initialize_history_directory():
     if not os.path.exists(HISTORY_DIRECTORY):
         os.makedirs(HISTORY_DIRECTORY)
 
-def load_last_file_size(url_id):
-    # Load the last file size for the given url_id
-    history_file = os.path.join(HISTORY_DIRECTORY, f"{url_id}_last_file_size.json")
+def load_last_modification_date(url_id):
+    # Load the last modification date for the given url_id
+    history_file = os.path.join(HISTORY_DIRECTORY, f"{url_id}_last_modification_date.json")
     if os.path.exists(history_file):
         with open(history_file, "r") as file:
             history_data = json.load(file)
-            return history_data.get("last_file_size")
+            return history_data.get("last_modification_date")
     else:
         return None
 
-def save_last_file_size(url_id, latest_file_size):
-    # Save the latest file size for the given url_id
-    history_data = {"last_file_size": latest_file_size}
-    history_file = os.path.join(HISTORY_DIRECTORY, f"{url_id}_last_file_size.json")
+def save_last_modification_date(url_id, latest_modification_date):
+    # Save the latest modification date for the given url_id
+    history_data = {"last_modification_date": latest_modification_date}
+    history_file = os.path.join(HISTORY_DIRECTORY, f"{url_id}_last_modification_date.json")
     with open(history_file, "w") as file:
         json.dump(history_data, file)
